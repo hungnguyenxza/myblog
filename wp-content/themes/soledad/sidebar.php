@@ -46,60 +46,64 @@ if ( is_home() || is_front_page() ) {
 }
 ?>
 
-<div id="sidebar" class="penci-sidebar-right penci-sidebar-content <?php echo sanitize_text_field( $heading_title . ' ' . $heading_align ); ?><?php if ( get_theme_mod( 'penci_sidebar_sticky' ) ): echo ' penci-sticky-sidebar'; endif; ?>">
-	<div class="theiaStickySidebar">
-		<?php /* Display sidebar */
-		if ( is_singular( 'portfolio' ) && is_active_sidebar( $sidebar_portfolio ) ) {
-			dynamic_sidebar( $sidebar_portfolio );
-		}
-		else if( function_exists( 'is_shop' ) && function_exists( 'is_product_category' ) && function_exists( 'is_product_tag' ) && function_exists( 'is_product' ) ) {
-			if( ( is_shop() || is_product_category() || is_product_tag() ) && is_active_sidebar( 'penci-shop-sidebar' ) ) {
-				dynamic_sidebar( 'penci-shop-sidebar' );
-			} else if( is_product() && is_active_sidebar( 'penci-shop-single' ) ) {
-				dynamic_sidebar( 'penci-shop-single' );
-			} else {
-				if ( ( is_home() || is_front_page() ) ) {
-					$show_on_front =  get_option( 'show_on_front' );
-					if( 'page' == $show_on_front && is_active_sidebar( $sidebar_pages ) ) {
+<?php 
+	if( wp_is_mobile() == false) {
+	<div id="sidebar" class="penci-sidebar-right penci-sidebar-content <?php echo sanitize_text_field( $heading_title . ' ' . $heading_align ); ?><?php if ( get_theme_mod( 'penci_sidebar_sticky' ) ): echo ' penci-sticky-sidebar'; endif; ?>">
+		<div class="theiaStickySidebar">
+			<?php /* Display sidebar */
+			if ( is_singular( 'portfolio' ) && is_active_sidebar( $sidebar_portfolio ) ) {
+				dynamic_sidebar( $sidebar_portfolio );
+			}
+			else if( function_exists( 'is_shop' ) && function_exists( 'is_product_category' ) && function_exists( 'is_product_tag' ) && function_exists( 'is_product' ) ) {
+				if( ( is_shop() || is_product_category() || is_product_tag() ) && is_active_sidebar( 'penci-shop-sidebar' ) ) {
+					dynamic_sidebar( 'penci-shop-sidebar' );
+				} else if( is_product() && is_active_sidebar( 'penci-shop-single' ) ) {
+					dynamic_sidebar( 'penci-shop-single' );
+				} else {
+					if ( ( is_home() || is_front_page() ) ) {
+						$show_on_front =  get_option( 'show_on_front' );
+						if( 'page' == $show_on_front && is_active_sidebar( $sidebar_pages ) ) {
+							dynamic_sidebar( $sidebar_pages );
+						}elseif ( is_active_sidebar( $sidebar_home ) ){
+							dynamic_sidebar( $sidebar_home );
+						}
+					}
+					else if ( is_category() && is_active_sidebar( $sidebar_category ) ) {
+						dynamic_sidebar( $sidebar_category );
+					}
+					else if ( is_single() && is_active_sidebar( $sidebar_single ) ) {
+						dynamic_sidebar( $sidebar_single );
+					}
+					else if ( is_page() && is_active_sidebar( $sidebar_pages )  ) {
 						dynamic_sidebar( $sidebar_pages );
-					}elseif ( is_active_sidebar( $sidebar_home ) ){
-						dynamic_sidebar( $sidebar_home );
+					}
+					else {
+						dynamic_sidebar( 'main-sidebar' );
 					}
 				}
-				else if ( is_category() && is_active_sidebar( $sidebar_category ) ) {
-					dynamic_sidebar( $sidebar_category );
-				}
-				else if ( is_single() && is_active_sidebar( $sidebar_single ) ) {
-					dynamic_sidebar( $sidebar_single );
-				}
-				else if ( is_page() && is_active_sidebar( $sidebar_pages )  ) {
+			}
+			else if ( ( is_home() || is_front_page() ) ) {
+				$show_on_front =  get_option( 'show_on_front' );
+				if( 'page' == $show_on_front && is_active_sidebar( $sidebar_pages ) ) {
 					dynamic_sidebar( $sidebar_pages );
-				}
-				else {
-					dynamic_sidebar( 'main-sidebar' );
+				}elseif ( is_active_sidebar( $sidebar_home ) ){
+					dynamic_sidebar( $sidebar_home );
 				}
 			}
-		}
-		else if ( ( is_home() || is_front_page() ) ) {
-			$show_on_front =  get_option( 'show_on_front' );
-			if( 'page' == $show_on_front && is_active_sidebar( $sidebar_pages ) ) {
+			else if ( is_category() && is_active_sidebar( $sidebar_category ) ) {
+				dynamic_sidebar( $sidebar_category );
+			}
+			else if ( is_single() && is_active_sidebar( $sidebar_single ) ) {
+				dynamic_sidebar( $sidebar_single );
+			}
+			else if ( is_page() && is_active_sidebar( $sidebar_pages )  ) {
 				dynamic_sidebar( $sidebar_pages );
-			}elseif ( is_active_sidebar( $sidebar_home ) ){
-				dynamic_sidebar( $sidebar_home );
 			}
-		}
-		else if ( is_category() && is_active_sidebar( $sidebar_category ) ) {
-			dynamic_sidebar( $sidebar_category );
-		}
-		else if ( is_single() && is_active_sidebar( $sidebar_single ) ) {
-			dynamic_sidebar( $sidebar_single );
-		}
-		else if ( is_page() && is_active_sidebar( $sidebar_pages )  ) {
-			dynamic_sidebar( $sidebar_pages );
-		}
-		else {
-			dynamic_sidebar( 'main-sidebar' );
-		}
-		?>
+			else {
+				dynamic_sidebar( 'main-sidebar' );
+			}
+			?>
+		</div>
 	</div>
-</div>
+} 
+?>
