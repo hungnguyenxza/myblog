@@ -46,8 +46,7 @@ if ( is_home() || is_front_page() ) {
 }
 ?>
 
-<?php 
-	if( wp_is_mobile() == false) {
+<?php if( !wp_is_mobile() ) : ?>
 	<div id="sidebar" class="penci-sidebar-right penci-sidebar-content <?php echo sanitize_text_field( $heading_title . ' ' . $heading_align ); ?><?php if ( get_theme_mod( 'penci_sidebar_sticky' ) ): echo ' penci-sticky-sidebar'; endif; ?>">
 		<div class="theiaStickySidebar">
 			<?php /* Display sidebar */
@@ -105,5 +104,4 @@ if ( is_home() || is_front_page() ) {
 			?>
 		</div>
 	</div>
-} 
-?>
+<?php endif; ?>
