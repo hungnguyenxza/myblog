@@ -10104,22 +10104,22 @@ ul.footer-menu{
     background-color: #6eb48c;
     color: #fff;
     z-index: 99999;
-    transform: translate3d(0,60px,0);
-    -webkit-transform: translate3d(0,60px,0);
-    -moz-transform: translate3d(0,60px,0);
-    -ms-transform: translate3d(0,60px,0);
-    -o-transform: translate3d(0,60px,0);
+    transform: translate3d(160px,-130px,0);
+    -webkit-transform: translate3d(160px,-130px,0);
+    -moz-transform: translate3d(160px,-130px,0);
+    -ms-transform: translate3d(160px,-130px,0);
+    -o-transform: translate3d(160px,-130px,0);
     -webkit-transition: transform .4s cubic-bezier(0.55, 0, 0.05, 1.1) 0s, opacity 0.3s;
     -moz-transition: transform .4s cubic-bezier(0.55, 0, 0.05, 1.1) 0s, opacity 0.3s;
     -o-transition: transform .4s cubic-bezier(0.55, 0, 0.05, 1.1) 0s, opacity 0.3s;
     transition: transform .4s cubic-bezier(0.55, 0, 0.05, 1.1) 0s, opacity 0.3s;
 }
 .penci-go-to-top-floating.show-up {
-    transform: translate3d(0,0,0);
-    -webkit-transform: translate3d(0,0,0);
-    -moz-transform: translate3d(0,0,0);
-    -ms-transform: translate3d(0,0,0);
-    -o-transform: translate3d(0,0,0);
+    transform: translate3d(-5px,-135px,0);
+    -webkit-transform: translate3d(-5px,-135px,0);
+    -moz-transform: translate3d(-5px,-135px,0);
+    -ms-transform: translate3d(-5px,-135px,0);
+    -o-transform: translate3d(-5px,-135px,0);
 }
 .penci-go-to-top-floating:hover {
     opacity: 0.85;
